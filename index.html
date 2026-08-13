@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+   content="width=device-width,
+            initial-scale=1.0,
+            maximum-scale=1.0,
+            user-scalable=no">
+
+<meta name="theme-color" content="#20252b">
+
+<title>Casa123</title>
+
+<style>
+
+/* ============================================================
+   CONFIGURAÇÃO GERAL
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    min-height: 100%;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #20252b;
+
+    color: #ffffff;
+
+}
+
+
+/* ============================================================
+   PAINEL
+   ============================================================ */
+
+.dashboard {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 12px;
+
+}
+
+
+/* ============================================================
+   CABEÇALHO
+   ============================================================ */
+
+.header {
+
+    background: #292f36;
+
+    border-radius: 8px;
+
+    padding: 15px;
+
+    margin-bottom: 12px;
+
+    box-shadow:
+        0 2px 6px rgba(0,0,0,0.35);
+
+}
+
+.title {
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+}
+
+.subtitle {
+
+    margin-top: 4px;
+
+    color: #aeb5bd;
+
+    font-size: 14px;
+
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.status {
+
+    margin-top: 10px;
+
+    font-size: 13px;
+
+    color: #9da5ad;
+
+}
+
+.status.ok {
+
+    color: #4caf50;
+
+}
+
+.status.error {
+
+    color: #ff5252;
+
+}
+
+
+/* ============================================================
+   ÁREA DOS GAUGES
+   ============================================================ */
+
+.gauges {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+
+}
+
+
+/* ============================================================
+   WIDGET
+   ============================================================ */
+
+.widget {
+
+    background: #292f36;
+
+    border-radius: 8px;
+
+    padding: 18px 10px 15px 10px;
+
+    text-align: center;
+
+    box-shadow:
+        0 2px 6px rgba(0,0,0,0.35);
+
+}
+
+
+.widget-title {
+
+    font-size: 17px;
+
+    color: #c7cdd3;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* ============================================================
+   GAUGE
+   ============================================================ */
+
+.gauge {
+
+    position: relative;
+
+    width: 180px;
+
+    height: 180px;
+
+    margin:
+        5px auto 10px auto;
+
+}
+
+
+.gauge svg {
+
+    width: 100%;
+
+    height: 100%;
+
+    transform:
+        rotate(-90deg);
+
+}
+
+
+.gauge-bg {
+
+    fill: none;
+
+    stroke: #454c54;
+
+    stroke-width: 14;
+
+}
+
+
+.gauge-value {
+
+    fill: none;
+
+    stroke-width: 14;
+
+    stroke-linecap: round;
+
+    stroke-dasharray: 439.82;
+
+    stroke-dashoffset: 439.82;
+
+    transition:
+        stroke-dashoffset 0.6s ease;
+
+}
+
+
+/* ============================================================
+   VALOR CENTRAL
+   ============================================================ */
+
+.gauge-center {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    text-align: center;
+
+}
+
+
+.gauge-number {
+
+    font-size: 38px;
+
+    font-weight: bold;
+
+}
+
+
+.gauge-unit {
+
+    font-size: 18px;
+
+    color: #aeb5bd;
+
+}
+
+
+/* ============================================================
+   LIMITES
+   ============================================================ */
+
+.limits {
+
+    font-size: 12px;
+
+    color: #8f979f;
+
+}
+
+
+/* ============================================================
+   INFORMAÇÕES
+   ============================================================ */
+
+.info {
+
+    margin-top: 12px;
+
+    background: #292f36;
+
+    border-radius: 8px;
+
+    padding: 15px;
+
+    box-shadow:
+        0 2px 6px rgba(0,0,0,0.35);
+
+}
+
+
+.info-row {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    padding: 7px 0;
+
+    border-bottom:
+        1px solid #3b4249;
+
+    font-size: 14px;
+
+}
+
+
+.info-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.info-label {
+
+    color: #9da5ad;
+
+}
+
+
+.info-value {
+
+    font-weight: bold;
+
+}
+
+
+/* ============================================================
+   ERRO
+   ============================================================ */
+
+.error {
+
+    display: none;
+
+    margin-top: 12px;
+
+    padding: 12px;
+
+    background: #4a2525;
+
+    color: #ffb0b0;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    word-break: break-word;
+
+}
+
+
+/* ============================================================
+   CELULAR
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    .dashboard {
+
+        padding: 8px;
+
+    }
+
+    .gauge {
+
+        width: 145px;
+
+        height: 145px;
+
+    }
+
+    .gauge-number {
+
+        font-size: 31px;
+
+    }
+
+    .gauge-unit {
+
+        font-size: 16px;
+
+    }
+
+}
+
+
+/* ============================================================
+   CELULAR MUITO ESTREITO
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+    .gauges {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .gauge {
+
+        width: 170px;
+
+        height: 170px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- ==========================================================
+     CABEÇALHO
+     ========================================================== -->
+
+<div class="header">
+
+```
+<div class="title">
+    Casa123
+</div>
+
+<div class="subtitle">
+    Monitoramento ambiental
+</div>
+
+<div
+    id="status"
+    class="status">
+
+    🟡 Conectando...
+
+</div>
+```
+
+</div>
+
+<!-- ==========================================================
+     GAUGES
+     ========================================================== -->
+
+<div class="gauges">
+
+<!-- ==========================================================
+     TEMPERATURA
+     ========================================================== -->
+
+<div class="widget">
+
+```
+<div class="widget-title">
+    🌡️ Temperatura
+</div>
+
+
+<div class="gauge">
+
+
+    <svg
+        viewBox="0 0 160 160">
+
+
+        <circle
+            class="gauge-bg"
+            cx="80"
+            cy="80"
+            r="70">
+        </circle>
+
+
+        <circle
+            id="temperatureGauge"
+            class="gauge-value"
+            cx="80"
+            cy="80"
+            r="70"
+            stroke="#ff9800">
+        </circle>
+
+
+    </svg>
+
+
+    <div class="gauge-center">
+
+        <div
+            id="temperature"
+            class="gauge-number">
+
+            --
+
+        </div>
+
+        <div class="gauge-unit">
+            °C
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<div class="limits">
+    0°C&nbsp;&nbsp;&nbsp;&nbsp;50°C
+</div>
+```
+
+</div>
+
+<!-- ==========================================================
+     UMIDADE
+     ========================================================== -->
+
+<div class="widget">
+
+```
+<div class="widget-title">
+    💧 Umidade
+</div>
+
+
+<div class="gauge">
+
+
+    <svg
+        viewBox="0 0 160 160">
+
+
+        <circle
+            class="gauge-bg"
+            cx="80"
+            cy="80"
+            r="70">
+        </circle>
+
+
+        <circle
+            id="humidityGauge"
+            class="gauge-value"
+            cx="80"
+            cy="80"
+            r="70"
+            stroke="#03a9f4">
+        </circle>
+
+
+    </svg>
+
+
+    <div class="gauge-center">
+
+        <div
+            id="humidity"
+            class="gauge-number">
+
+            --
+
+        </div>
+
+        <div class="gauge-unit">
+            %
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<div class="limits">
+    0%&nbsp;&nbsp;&nbsp;&nbsp;100%
+</div>
+```
+
+</div>
+
+</div>
+
+<!-- ==========================================================
+     INFORMAÇÕES
+     ========================================================== -->
+
+<div class="info">
+
+```
+<div class="info-row">
+
+    <span class="info-label">
+        Thing
+    </span>
+
+    <span
+        id="thing"
+        class="info-value">
+
+        --
+
+    </span>
+
+</div>
+
+
+<div class="info-row">
+
+    <span class="info-label">
+        Última atualização
+    </span>
+
+    <span
+        id="created"
+        class="info-value">
+
+        --
+
+    </span>
+
+</div>
+```
+
+</div>
+
+<!-- ==========================================================
+     ERRO
+     ========================================================== -->
+
+<div
+    id="error"
+    class="error">
+
+</div>
+
+</div>
+
+<script>
+
+
+// ============================================================
+// CONFIGURAÇÃO
+// ============================================================
+
+const THING = "casa123";
+
+
+const URL_DWEET =
+    "https://dweet.cc/get/latest/dweet/for/"
+    + THING;
+
+
+// Atualização a cada 5 segundos
+
+const INTERVALO = 5000;
+
+
+// ============================================================
+// CONFIGURAÇÃO DOS GAUGES
+// ============================================================
+
+// Raio = 70
+// Circunferência = 2 * PI * 70
+
+const CIRCUNFERENCIA =
+    2 * Math.PI * 70;
+
+
+// Temperatura:
+// escala de 0 a 50 °C
+
+const TEMP_MIN = 0;
+const TEMP_MAX = 50;
+
+
+// Umidade:
+// escala de 0 a 100 %
+
+const HUM_MIN = 0;
+const HUM_MAX = 100;
+
+
+
+// ============================================================
+// ELEMENTOS
+// ============================================================
+
+const temperatureElement =
+    document.getElementById(
+        "temperature"
+    );
+
+
+const humidityElement =
+    document.getElementById(
+        "humidity"
+    );
+
+
+const temperatureGauge =
+    document.getElementById(
+        "temperatureGauge"
+    );
+
+
+const humidityGauge =
+    document.getElementById(
+        "humidityGauge"
+    );
+
+
+const statusElement =
+    document.getElementById(
+        "status"
+    );
+
+
+const thingElement =
+    document.getElementById(
+        "thing"
+    );
+
+
+const createdElement =
+    document.getElementById(
+        "created"
+    );
+
+
+const errorElement =
+    document.getElementById(
+        "error"
+    );
+
+
+
+// ============================================================
+// CONFIGURAÇÃO INICIAL DOS GAUGES
+// ============================================================
+
+temperatureGauge.style.strokeDasharray =
+    CIRCUNFERENCIA;
+
+temperatureGauge.style.strokeDashoffset =
+    CIRCUNFERENCIA;
+
+
+humidityGauge.style.strokeDasharray =
+    CIRCUNFERENCIA;
+
+humidityGauge.style.strokeDashoffset =
+    CIRCUNFERENCIA;
+
+
+
+// ============================================================
+// FUNÇÃO PARA LIMITAR VALOR
+// ============================================================
+
+function limitar(
+    valor,
+    minimo,
+    maximo
+) {
+
+    return Math.min(
+        Math.max(
+            valor,
+            minimo
+        ),
+        maximo
+    );
+
+}
+
+
+
+// ============================================================
+// ATUALIZA GAUGE
+// ============================================================
+
+function atualizarGauge(
+    gauge,
+    valor,
+    minimo,
+    maximo
+) {
+
+
+    const valorLimitado =
+        limitar(
+            valor,
+            minimo,
+            maximo
+        );
+
+
+    const percentual =
+        (
+            valorLimitado - minimo
+        )
+        /
+        (
+            maximo - minimo
+        );
+
+
+    const offset =
+        CIRCUNFERENCIA *
+        (1 - percentual);
+
+
+    gauge.style.strokeDashoffset =
+        offset;
+
+}
+
+
+
+// ============================================================
+// BUSCA DADOS DO DWEET
+// ============================================================
+
+async function obterDados() {
+
+
+    try {
+
+
+        statusElement.textContent =
+            "🟡 Atualizando...";
+
+
+        statusElement.className =
+            "status";
+
+
+        errorElement.style.display =
+            "none";
+
+
+        // ----------------------------------------------------
+        // CONSULTA DWEET
+        // ----------------------------------------------------
+
+        const resposta =
+            await fetch(
+                URL_DWEET,
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
+            );
+
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                "HTTP " +
+                resposta.status
+            );
+
+        }
+
+
+        // ----------------------------------------------------
+        // JSON
+        // ----------------------------------------------------
+
+        const dados =
+            await resposta.json();
+
+
+        // ----------------------------------------------------
+        // LOCALIZA O DWEET
+        // ----------------------------------------------------
+
+        let dweet;
+
+
+        if (
+            Array.isArray(
+                dados.with
+            )
+        ) {
+
+            dweet =
+                dados.with[0];
+
+        } else {
+
+            dweet =
+                dados;
+
+        }
+
+
+        if (
+            !dweet ||
+            !dweet.content
+        ) {
+
+            throw new Error(
+                "Formato de dados inválido"
+            );
+
+        }
+
+
+        const content =
+            dweet.content;
+
+
+
+        // ====================================================
+        // TEMPERATURA
+        // ====================================================
+
+        if (
+            content.temperature
+            !== undefined
+        ) {
+
+
+            const temperatura =
+                Number(
+                    content.temperature
+                );
+
+
+            if (
+                !isNaN(
+                    temperatura
+                )
+            ) {
+
+
+                temperatureElement.textContent =
+                    temperatura.toFixed(2);
+
+
+                atualizarGauge(
+                    temperatureGauge,
+                    temperatura,
+                    TEMP_MIN,
+                    TEMP_MAX
+                );
+
+            }
+
+        }
+
+
+
+        // ====================================================
+        // UMIDADE
+        // ====================================================
+
+        if (
+            content.humidity
+            !== undefined
+        ) {
+
+
+            const umidade =
+                Number(
+                    content.humidity
+                );
+
+
+            if (
+                !isNaN(
+                    umidade
+                )
+            ) {
+
+
+                humidityElement.textContent =
+                    umidade.toFixed(2);
+
+
+                atualizarGauge(
+                    humidityGauge,
+                    umidade,
+                    HUM_MIN,
+                    HUM_MAX
+                );
+
+            }
+
+        }
+
+
+
+        // ====================================================
+        // THING
+        // ====================================================
+
+        thingElement.textContent =
+            dweet.thing ||
+            THING;
+
+
+
+        // ====================================================
+        // DATA
+        // ====================================================
+
+        createdElement.textContent =
+            dweet.created ||
+            "--";
+
+
+
+        // ====================================================
+        // STATUS
+        // ====================================================
+
+        statusElement.textContent =
+            "🟢 Dados atualizados";
+
+
+        statusElement.className =
+            "status ok";
+
+
+    }
+
+
+    catch (erro) {
+
+
+        console.error(
+            "Erro Dweet:",
+            erro
+        );
+
+
+        statusElement.textContent =
+            "🔴 Erro de conexão";
+
+
+        statusElement.className =
+            "status error";
+
+
+        errorElement.style.display =
+            "block";
+
+
+        errorElement.textContent =
+            erro.message;
+
+    }
+
+}
+
+
+
+// ============================================================
+// PRIMEIRA LEITURA
+// ============================================================
+
+obterDados();
+
+
+
+// ============================================================
+// ATUALIZAÇÃO AUTOMÁTICA
+// ============================================================
+
+setInterval(
+    obterDados,
+    INTERVALO
+);
+
+
+</script>
+
+</body>
+
+</html>
