@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
@@ -7,14 +7,15 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-   content="width=device-width,
-            initial-scale=1.0,
-            maximum-scale=1.0,
-            user-scalable=no">
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
 
-<meta name="theme-color" content="#20252b">
+<meta name="theme-color" content="#071525">
 
-<title>Casa123BH</title>
+<title>SalaFazenda + Casa123BH</title>
+
 
 <style>
 
@@ -28,10 +29,8 @@
 
 html,
 body {
-
     margin: 0;
     padding: 0;
-
     width: 100%;
     min-height: 100%;
 
@@ -40,27 +39,30 @@ body {
         Helvetica,
         sans-serif;
 
-    background: #20252b;
+    background:
+        linear-gradient(
+            135deg,
+            #06111e,
+            #0a1c30
+        );
 
-    color: #ffffff;
-
+    color: white;
 }
 
 
 /* ============================================================
-   PAINEL
+   CONTAINER PRINCIPAL
    ============================================================ */
 
-.dashboard {
+.container {
 
     width: 100%;
 
-    max-width: 900px;
+    max-width: 1500px;
 
     margin: auto;
 
-    padding: 12px;
-
+    padding: 20px;
 }
 
 
@@ -70,67 +72,123 @@ body {
 
 .header {
 
-    background: #292f36;
+    background:
+        rgba(3, 14, 27, 0.90);
 
-    border-radius: 8px;
+    border:
+        1px solid #173554;
 
-    padding: 15px;
+    border-radius: 16px;
 
-    margin-bottom: 12px;
+    padding: 22px;
+
+    margin-bottom: 20px;
+
+    text-align: center;
 
     box-shadow:
-        0 2px 6px rgba(0,0,0,0.35);
-
+        0 8px 25px rgba(0,0,0,0.25);
 }
 
-.title {
 
-    font-size: 25px;
+.header h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(32px, 5vw, 55px);
+}
+
+
+.header p {
+
+    margin:
+        7px 0 0;
+
+    color: #79bfff;
+
+    font-size:
+        clamp(16px, 2vw, 24px);
 
     font-weight: bold;
-
 }
 
-.subtitle {
 
-    margin-top: 4px;
+/* ============================================================
+   SEÇÃO
+   ============================================================ */
 
-    color: #aeb5bd;
+.section {
+
+    margin-bottom: 25px;
+}
+
+
+.section-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding:
+        15px 20px;
+
+    margin-bottom: 15px;
+
+    border:
+        1px solid #28577e;
+
+    border-radius: 12px;
+
+    background:
+        rgba(12, 32, 53, 0.80);
+}
+
+
+.section-title {
+
+    font-size:
+        clamp(21px, 3vw, 30px);
+
+    font-weight: bold;
+}
+
+
+.section-subtitle {
+
+    color: #8eafc9;
 
     font-size: 14px;
 
+    margin-top: 4px;
+}
+
+
+.section-status {
+
+    padding:
+        8px 15px;
+
+    border-radius: 8px;
+
+    background: #267d39;
+
+    font-weight: bold;
+
+    color: white;
+}
+
+
+.section-status.error {
+
+    background: #8b3030;
 }
 
 
 /* ============================================================
-   STATUS
-   ============================================================ */
-
-.status {
-
-    margin-top: 10px;
-
-    font-size: 13px;
-
-    color: #9da5ad;
-
-}
-
-.status.ok {
-
-    color: #4caf50;
-
-}
-
-.status.error {
-
-    color: #ff5252;
-
-}
-
-
-/* ============================================================
-   ÁREA DOS GAUGES
+   GAUGES
    ============================================================ */
 
 .gauges {
@@ -138,59 +196,66 @@ body {
     display: grid;
 
     grid-template-columns:
-        1fr 1fr;
+        repeat(3, 1fr);
 
-    gap: 12px;
-
+    gap: 18px;
 }
 
 
 /* ============================================================
-   WIDGET
+   CARD GAUGE
    ============================================================ */
 
-.widget {
+.card {
 
-    background: #292f36;
+    background:
+        linear-gradient(
+            145deg,
+            #111b26,
+            #111923
+        );
 
-    border-radius: 8px;
+    border:
+        1px solid #35485c;
 
-    padding: 18px 10px 15px 10px;
+    border-radius: 17px;
+
+    padding: 20px;
 
     text-align: center;
 
     box-shadow:
-        0 2px 6px rgba(0,0,0,0.35);
-
+        0 8px 25px
+        rgba(0,0,0,0.25);
 }
 
 
-.widget-title {
+.card-title {
 
-    font-size: 17px;
+    font-size: 22px;
 
-    color: #c7cdd3;
+    font-weight: bold;
 
     margin-bottom: 8px;
-
 }
 
 
 /* ============================================================
-   GAUGE
+   GAUGE CIRCULAR
    ============================================================ */
 
 .gauge {
 
     position: relative;
 
-    width: 180px;
+    width: 210px;
 
-    height: 180px;
+    height: 210px;
+
+    max-width: 100%;
 
     margin:
-        5px auto 10px auto;
-
+        8px auto 10px;
 }
 
 
@@ -202,7 +267,6 @@ body {
 
     transform:
         rotate(-90deg);
-
 }
 
 
@@ -210,10 +274,9 @@ body {
 
     fill: none;
 
-    stroke: #454c54;
+    stroke: #3e4852;
 
-    stroke-width: 14;
-
+    stroke-width: 15;
 }
 
 
@@ -221,7 +284,7 @@ body {
 
     fill: none;
 
-    stroke-width: 14;
+    stroke-width: 15;
 
     stroke-linecap: round;
 
@@ -230,80 +293,71 @@ body {
     stroke-dashoffset: 439.82;
 
     transition:
-        stroke-dashoffset 0.6s ease;
-
+        stroke-dashoffset 0.7s ease;
 }
 
-
-/* ============================================================
-   VALOR CENTRAL
-   ============================================================ */
 
 .gauge-center {
 
     position: absolute;
 
-    left: 0;
-    right: 0;
-
     top: 50%;
+
+    left: 0;
+
+    right: 0;
 
     transform:
         translateY(-50%);
 
     text-align: center;
-
 }
 
 
 .gauge-number {
 
-    font-size: 38px;
+    font-size:
+        clamp(34px, 4vw, 48px);
 
     font-weight: bold;
-
 }
 
 
 .gauge-unit {
 
+    margin-top: 5px;
+
+    color: #aeb8c2;
+
     font-size: 18px;
-
-    color: #aeb5bd;
-
 }
 
-
-/* ============================================================
-   LIMITES
-   ============================================================ */
 
 .limits {
 
-    font-size: 12px;
+    color: #8f9aa5;
 
-    color: #8f979f;
-
+    font-size: 13px;
 }
 
 
 /* ============================================================
-   INFORMAÇÕES
+   INFORMAÇÕES DO SENSOR
    ============================================================ */
 
 .info {
 
-    margin-top: 12px;
-
-    background: #292f36;
-
-    border-radius: 8px;
+    margin-top: 15px;
 
     padding: 15px;
 
-    box-shadow:
-        0 2px 6px rgba(0,0,0,0.35);
+    border:
+        1px solid #34485c;
 
+    border-radius: 12px;
+
+    background:
+        rgba(17,29,42,0.80);
 }
 
 
@@ -311,30 +365,28 @@ body {
 
     display: flex;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
-    padding: 7px 0;
+    padding:
+        7px 0;
 
     border-bottom:
-        1px solid #3b4249;
+        1px solid #354250;
 
     font-size: 14px;
-
 }
 
 
 .info-row:last-child {
 
-    border-bottom: none;
-
+    border-bottom:
+        none;
 }
 
 
 .info-label {
 
-    color: #9da5ad;
-
+    color: #929faa;
 }
 
 
@@ -342,88 +394,152 @@ body {
 
     font-weight: bold;
 
+    color: #4ed75c;
 }
 
 
 /* ============================================================
-   ERRO
+   ÁREA DE ERRO
    ============================================================ */
 
 .error {
 
     display: none;
 
-    margin-top: 12px;
+    margin-top: 10px;
 
-    padding: 12px;
+    padding: 10px;
 
-    background: #4a2525;
+    background: #512929;
 
-    color: #ffb0b0;
+    color: #ffb4b4;
 
     border-radius: 7px;
 
     font-size: 13px;
 
     word-break: break-word;
-
 }
 
 
 /* ============================================================
-   CELULAR
+   RODAPÉ
    ============================================================ */
+
+.footer {
+
+    margin-top: 10px;
+
+    padding: 18px;
+
+    text-align: center;
+
+    border-top:
+        1px solid #263d53;
+
+    color: #83afd2;
+
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
+@media (max-width: 1000px) {
+
+    .gauges {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
 
 @media (max-width: 600px) {
 
-    .dashboard {
+    .container {
 
         padding: 8px;
-
     }
 
-    .gauge {
 
-        width: 145px;
+    .header {
 
-        height: 145px;
+        padding: 15px;
 
+        margin-bottom: 12px;
     }
 
-    .gauge-number {
 
-        font-size: 31px;
+    .section-header {
 
+        padding: 12px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
     }
 
-    .gauge-unit {
-
-        font-size: 16px;
-
-    }
-
-}
-
-
-/* ============================================================
-   CELULAR MUITO ESTREITO
-   ============================================================ */
-
-@media (max-width: 360px) {
 
     .gauges {
 
         grid-template-columns:
             1fr;
 
+        gap: 12px;
     }
+
+
+    .card {
+
+        padding: 14px;
+    }
+
 
     .gauge {
 
-        width: 170px;
+        width: 180px;
 
-        height: 170px;
+        height: 180px;
+    }
 
+
+    .gauge-number {
+
+        font-size: 38px;
+    }
+
+
+    .section-status {
+
+        font-size: 13px;
+    }
+
+}
+
+
+/* ============================================================
+   CELULAR PEQUENO
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+    .gauge {
+
+        width: 160px;
+
+        height: 160px;
+    }
+
+
+    .gauge-number {
+
+        font-size: 32px;
     }
 
 }
@@ -432,360 +548,813 @@ body {
 
 </head>
 
+
 <body>
 
-<div class="dashboard">
+
+<div class="container">
+
 
 <!-- ==========================================================
-     CABEÇALHO
+     CABEÇALHO PRINCIPAL
      ========================================================== -->
 
-<div class="header">
+<header class="header">
 
-```
-<div class="title">
-    Casa123BH
-</div>
+    <h1>
+        Monitoramento Ambiental
+    </h1>
 
-<div class="subtitle">
-    Monitoramento ambiental
-</div>
+    <p>
+        SalaFazenda + Casa123BH
+    </p>
 
-<div
-    id="status"
-    class="status">
+</header>
 
-    🟡 Conectando...
 
-</div>
-```
-
-</div>
 
 <!-- ==========================================================
-     GAUGES
+     ==========================================================
+     SALAFAZENDA
+     ==========================================================
      ========================================================== -->
+
+<section class="section">
+
+
+<div class="section-header">
+
+    <div>
+
+        <div class="section-title">
+            🌱 SalaFazenda
+        </div>
+
+        <div class="section-subtitle">
+            SHT30 + BMP280 via dweet.cc
+        </div>
+
+    </div>
+
+
+    <div
+        id="salaStatus"
+        class="section-status">
+
+        CONECTANDO...
+
+    </div>
+
+</div>
+
+
 
 <div class="gauges">
 
+
 <!-- ==========================================================
-     TEMPERATURA
+     SALAFAZENDA - TEMPERATURA
      ========================================================== -->
 
-<div class="widget">
+<div class="card">
 
-```
-<div class="widget-title">
-    🌡️ Temperatura
-</div>
-
-
-<div class="gauge">
+    <div class="card-title">
+        🌡️ Temperatura
+    </div>
 
 
-    <svg
-        viewBox="0 0 160 160">
+    <div class="gauge">
+
+        <svg viewBox="0 0 160 160">
+
+            <circle
+                class="gauge-bg"
+                cx="80"
+                cy="80"
+                r="70">
+            </circle>
 
 
-        <circle
-            class="gauge-bg"
-            cx="80"
-            cy="80"
-            r="70">
-        </circle>
+            <circle
+                id="salaTempGauge"
+                class="gauge-value"
+                cx="80"
+                cy="80"
+                r="70"
+                stroke="#ff7043">
+            </circle>
+
+        </svg>
 
 
-        <circle
-            id="temperatureGauge"
-            class="gauge-value"
-            cx="80"
-            cy="80"
-            r="70"
-            stroke="#ff9800">
-        </circle>
+        <div class="gauge-center">
 
+            <div
+                id="salaTemperature"
+                class="gauge-number">
 
-    </svg>
+                --
 
+            </div>
 
-    <div class="gauge-center">
+            <div class="gauge-unit">
+                °C
+            </div>
 
-        <div
-            id="temperature"
-            class="gauge-number">
-
-            --
-
-        </div>
-
-        <div class="gauge-unit">
-            °C
         </div>
 
     </div>
 
 
-</div>
+    <div class="limits">
+        -10 °C &nbsp;&nbsp; 50 °C
+    </div>
 
 
-<div class="limits">
-    0°C&nbsp;&nbsp;&nbsp;&nbsp;50°C
-</div>
-```
+    <div class="info">
 
-</div>
+        <div class="info-row">
 
-<!-- ==========================================================
-     UMIDADE
-     ========================================================== -->
+            <span class="info-label">
+                Thing
+            </span>
 
-<div class="widget">
-
-```
-<div class="widget-title">
-    💧 Umidade
-</div>
-
-
-<div class="gauge">
-
-
-    <svg
-        viewBox="0 0 160 160">
-
-
-        <circle
-            class="gauge-bg"
-            cx="80"
-            cy="80"
-            r="70">
-        </circle>
-
-
-        <circle
-            id="humidityGauge"
-            class="gauge-value"
-            cx="80"
-            cy="80"
-            r="70"
-            stroke="#03a9f4">
-        </circle>
-
-
-    </svg>
-
-
-    <div class="gauge-center">
-
-        <div
-            id="humidity"
-            class="gauge-number">
-
-            --
+            <span class="info-value">
+                salafazenda
+            </span>
 
         </div>
 
-        <div class="gauge-unit">
-            %
+    </div>
+
+</div>
+
+
+
+<!-- ==========================================================
+     SALAFAZENDA - UMIDADE
+     ========================================================== -->
+
+<div class="card">
+
+    <div class="card-title">
+        💧 Umidade
+    </div>
+
+
+    <div class="gauge">
+
+        <svg viewBox="0 0 160 160">
+
+            <circle
+                class="gauge-bg"
+                cx="80"
+                cy="80"
+                r="70">
+            </circle>
+
+
+            <circle
+                id="salaHumGauge"
+                class="gauge-value"
+                cx="80"
+                cy="80"
+                r="70"
+                stroke="#29a9ff">
+            </circle>
+
+        </svg>
+
+
+        <div class="gauge-center">
+
+            <div
+                id="salaHumidity"
+                class="gauge-number">
+
+                --
+
+            </div>
+
+            <div class="gauge-unit">
+                %
+            </div>
+
         </div>
 
     </div>
 
 
+    <div class="limits">
+        0 % &nbsp;&nbsp; 100 %
+    </div>
+
+
+    <div class="info">
+
+        <div class="info-row">
+
+            <span class="info-label">
+                Sensor
+            </span>
+
+            <span class="info-value">
+                SHT30
+            </span>
+
+        </div>
+
+    </div>
+
 </div>
 
 
-<div class="limits">
-    0%&nbsp;&nbsp;&nbsp;&nbsp;100%
-</div>
-```
-
-</div>
-
-</div>
 
 <!-- ==========================================================
-     INFORMAÇÕES
+     SALAFAZENDA - PRESSÃO
      ========================================================== -->
+
+<div class="card">
+
+    <div class="card-title">
+        ◉ Pressão
+    </div>
+
+
+    <div class="gauge">
+
+        <svg viewBox="0 0 160 160">
+
+            <circle
+                class="gauge-bg"
+                cx="80"
+                cy="80"
+                r="70">
+            </circle>
+
+
+            <circle
+                id="salaPressureGauge"
+                class="gauge-value"
+                cx="80"
+                cy="80"
+                r="70"
+                stroke="#9258e8">
+            </circle>
+
+        </svg>
+
+
+        <div class="gauge-center">
+
+            <div
+                id="salaPressure"
+                class="gauge-number">
+
+                --
+
+            </div>
+
+            <div class="gauge-unit">
+                hPa
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="limits">
+        850 hPa &nbsp;&nbsp; 1100 hPa
+    </div>
+
+
+    <div class="info">
+
+        <div class="info-row">
+
+            <span class="info-label">
+                Sensor
+            </span>
+
+            <span class="info-value">
+                BMP280
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
 
 <div class="info">
 
-```
-<div class="info-row">
+    <div class="info-row">
 
-    <span class="info-label">
-        Thing
-    </span>
+        <span class="info-label">
+            Thing Dweet
+        </span>
 
-    <span
-        id="thing"
-        class="info-value">
+        <span class="info-value">
+            salafazenda
+        </span>
 
-        --
+    </div>
 
-    </span>
+
+    <div class="info-row">
+
+        <span class="info-label">
+            Última atualização
+        </span>
+
+        <span
+            id="salaUpdate"
+            class="info-value">
+
+            --
+
+        </span>
+
+    </div>
+
+
+    <div
+        id="salaError"
+        class="error">
+    </div>
 
 </div>
 
 
-<div class="info-row">
+</section>
 
-    <span class="info-label">
-        Última atualização
-    </span>
 
-    <span
-        id="created"
-        class="info-value">
-
-        --
-
-    </span>
-
-</div>
-```
-
-</div>
 
 <!-- ==========================================================
-     ERRO
+     ==========================================================
+     CASA123
+     ==========================================================
      ========================================================== -->
 
-<div
-    id="error"
-    class="error">
+<section class="section">
+
+
+<div class="section-header">
+
+    <div>
+
+        <div class="section-title">
+            🏠 Casa123BH
+        </div>
+
+        <div class="section-subtitle">
+            Monitoramento ambiental via dweet.cc
+        </div>
+
+    </div>
+
+
+    <div
+        id="casaStatus"
+        class="section-status">
+
+        CONECTANDO...
+
+    </div>
 
 </div>
 
+
+
+<div class="gauges">
+
+
+<!-- ==========================================================
+     CASA123 - TEMPERATURA
+     ========================================================== -->
+
+<div class="card">
+
+    <div class="card-title">
+        🌡️ Temperatura
+    </div>
+
+
+    <div class="gauge">
+
+        <svg viewBox="0 0 160 160">
+
+            <circle
+                class="gauge-bg"
+                cx="80"
+                cy="80"
+                r="70">
+            </circle>
+
+
+            <circle
+                id="casaTempGauge"
+                class="gauge-value"
+                cx="80"
+                cy="80"
+                r="70"
+                stroke="#ff9800">
+            </circle>
+
+        </svg>
+
+
+        <div class="gauge-center">
+
+            <div
+                id="casaTemperature"
+                class="gauge-number">
+
+                --
+
+            </div>
+
+            <div class="gauge-unit">
+                °C
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="limits">
+        0 °C &nbsp;&nbsp; 50 °C
+    </div>
+
+
+    <div class="info">
+
+        <div class="info-row">
+
+            <span class="info-label">
+                Thing
+            </span>
+
+            <span class="info-value">
+                casa123
+            </span>
+
+        </div>
+
+    </div>
+
 </div>
+
+
+
+<!-- ==========================================================
+     CASA123 - UMIDADE
+     ========================================================== -->
+
+<div class="card">
+
+    <div class="card-title">
+        💧 Umidade
+    </div>
+
+
+    <div class="gauge">
+
+        <svg viewBox="0 0 160 160">
+
+            <circle
+                class="gauge-bg"
+                cx="80"
+                cy="80"
+                r="70">
+            </circle>
+
+
+            <circle
+                id="casaHumGauge"
+                class="gauge-value"
+                cx="80"
+                cy="80"
+                r="70"
+                stroke="#03a9f4">
+            </circle>
+
+        </svg>
+
+
+        <div class="gauge-center">
+
+            <div
+                id="casaHumidity"
+                class="gauge-number">
+
+                --
+
+            </div>
+
+            <div class="gauge-unit">
+                %
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="limits">
+        0 % &nbsp;&nbsp; 100 %
+    </div>
+
+
+    <div class="info">
+
+        <div class="info-row">
+
+            <span class="info-label">
+                Sensor
+            </span>
+
+            <span class="info-value">
+                AHT20
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==========================================================
+     CASA123 - INFORMAÇÕES
+     ========================================================== -->
+
+<div class="card">
+
+    <div class="card-title">
+        📡 Dweet
+    </div>
+
+
+    <div class="info">
+
+        <div class="info-row">
+
+            <span class="info-label">
+                Thing
+            </span>
+
+            <span class="info-value">
+                casa123
+            </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <span class="info-label">
+                Atualização
+            </span>
+
+            <span
+                id="casaUpdate"
+                class="info-value">
+
+                --
+
+            </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <span class="info-label">
+                Intervalo
+            </span>
+
+            <span class="info-value">
+                5 segundos
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="casaError"
+        class="error">
+    </div>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- ==========================================================
+     RODAPÉ
+     ========================================================== -->
+
+<footer class="footer">
+
+    Monitoramento automático via dweet.cc
+
+    <br><br>
+
+    SalaFazenda: SHT30 + BMP280
+
+    &nbsp; | &nbsp;
+
+    Casa123BH: AHT20
+
+</footer>
+
+
+</div>
+
+
 
 <script>
 
-
-// ============================================================
-// CONFIGURAÇÃO
-// ============================================================
-
-const THING = "casa123";
+/* ============================================================
+   CONFIGURAÇÃO DWEET
+   ============================================================ */
 
 
-const URL_DWEET =
+/*
+   SALAFAZENDA
+*/
+
+const SALA_THING = "salafazenda";
+
+const SALA_URL =
     "https://dweet.cc/get/latest/dweet/for/"
-    + THING;
+    + SALA_THING;
 
 
-// Atualização a cada 5 segundos
+/*
+   CASA123
+*/
 
-const INTERVALO = 5000;
+const CASA_THING = "casa123";
+
+const CASA_URL =
+    "https://dweet.cc/get/latest/dweet/for/"
+    + CASA_THING;
 
 
-// ============================================================
-// CONFIGURAÇÃO DOS GAUGES
-// ============================================================
+/* ============================================================
+   INTERVALOS
+   ============================================================ */
 
-// Raio = 70
-// Circunferência = 2 * PI * 70
+const SALA_INTERVALO = 10000;
+
+const CASA_INTERVALO = 5000;
+
+
+/* ============================================================
+   CIRCUNFERÊNCIA DOS GAUGES
+   ============================================================ */
 
 const CIRCUNFERENCIA =
     2 * Math.PI * 70;
 
 
-// Temperatura:
-// escala de 0 a 50 °C
+/* ============================================================
+   ELEMENTOS SALAFAZENDA
+   ============================================================ */
 
-const TEMP_MIN = 0;
-const TEMP_MAX = 50;
-
-
-// Umidade:
-// escala de 0 a 100 %
-
-const HUM_MIN = 0;
-const HUM_MAX = 100;
-
-
-
-// ============================================================
-// ELEMENTOS
-// ============================================================
-
-const temperatureElement =
+const salaTempGauge =
     document.getElementById(
-        "temperature"
+        "salaTempGauge"
+    );
+
+const salaHumGauge =
+    document.getElementById(
+        "salaHumGauge"
+    );
+
+const salaPressureGauge =
+    document.getElementById(
+        "salaPressureGauge"
+    );
+
+const salaTemperature =
+    document.getElementById(
+        "salaTemperature"
+    );
+
+const salaHumidity =
+    document.getElementById(
+        "salaHumidity"
+    );
+
+const salaPressure =
+    document.getElementById(
+        "salaPressure"
+    );
+
+const salaStatus =
+    document.getElementById(
+        "salaStatus"
+    );
+
+const salaUpdate =
+    document.getElementById(
+        "salaUpdate"
+    );
+
+const salaError =
+    document.getElementById(
+        "salaError"
     );
 
 
-const humidityElement =
+/* ============================================================
+   ELEMENTOS CASA123
+   ============================================================ */
+
+const casaTempGauge =
     document.getElementById(
-        "humidity"
+        "casaTempGauge"
+    );
+
+const casaHumGauge =
+    document.getElementById(
+        "casaHumGauge"
+    );
+
+const casaTemperature =
+    document.getElementById(
+        "casaTemperature"
+    );
+
+const casaHumidity =
+    document.getElementById(
+        "casaHumidity"
+    );
+
+const casaStatus =
+    document.getElementById(
+        "casaStatus"
+    );
+
+const casaUpdate =
+    document.getElementById(
+        "casaUpdate"
+    );
+
+const casaError =
+    document.getElementById(
+        "casaError"
     );
 
 
-const temperatureGauge =
-    document.getElementById(
-        "temperatureGauge"
+/* ============================================================
+   CONFIGURAÇÃO INICIAL
+   ============================================================ */
+
+document
+    .querySelectorAll(
+        ".gauge-value"
+    )
+    .forEach(
+        gauge => {
+
+            gauge.style.strokeDasharray =
+                CIRCUNFERENCIA;
+
+            gauge.style.strokeDashoffset =
+                CIRCUNFERENCIA;
+
+        }
     );
 
 
-const humidityGauge =
-    document.getElementById(
-        "humidityGauge"
-    );
-
-
-const statusElement =
-    document.getElementById(
-        "status"
-    );
-
-
-const thingElement =
-    document.getElementById(
-        "thing"
-    );
-
-
-const createdElement =
-    document.getElementById(
-        "created"
-    );
-
-
-const errorElement =
-    document.getElementById(
-        "error"
-    );
-
-
-
-// ============================================================
-// CONFIGURAÇÃO INICIAL DOS GAUGES
-// ============================================================
-
-temperatureGauge.style.strokeDasharray =
-    CIRCUNFERENCIA;
-
-temperatureGauge.style.strokeDashoffset =
-    CIRCUNFERENCIA;
-
-
-humidityGauge.style.strokeDasharray =
-    CIRCUNFERENCIA;
-
-humidityGauge.style.strokeDashoffset =
-    CIRCUNFERENCIA;
-
-
-
-// ============================================================
-// FUNÇÃO PARA LIMITAR VALOR
-// ============================================================
+/* ============================================================
+   LIMITAR VALOR
+   ============================================================ */
 
 function limitar(
     valor,
     minimo,
     maximo
-) {
+)
+{
 
     return Math.min(
         Math.max(
@@ -798,18 +1367,17 @@ function limitar(
 }
 
 
-
-// ============================================================
-// ATUALIZA GAUGE
-// ============================================================
+/* ============================================================
+   ATUALIZAR GAUGE
+   ============================================================ */
 
 function atualizarGauge(
     gauge,
     valor,
     minimo,
     maximo
-) {
-
+)
+{
 
     const valorLimitado =
         limitar(
@@ -821,17 +1389,22 @@ function atualizarGauge(
 
     const percentual =
         (
-            valorLimitado - minimo
+            valorLimitado -
+            minimo
         )
         /
         (
-            maximo - minimo
+            maximo -
+            minimo
         );
 
 
     const offset =
         CIRCUNFERENCIA *
-        (1 - percentual);
+        (
+            1 -
+            percentual
+        );
 
 
     gauge.style.strokeDashoffset =
@@ -840,36 +1413,52 @@ function atualizarGauge(
 }
 
 
+/* ============================================================
+   DATA/HORA
+   ============================================================ */
 
-// ============================================================
-// BUSCA DADOS DO DWEET
-// ============================================================
+function horaAtual()
+{
 
-async function obterDados() {
+    return new Date()
+        .toLocaleString(
+            "pt-BR"
+        );
 
-
-    try {
-
-
-        statusElement.textContent =
-            "🟡 Atualizando...";
-
-
-        statusElement.className =
-            "status";
+}
 
 
-        errorElement.style.display =
+/* ============================================================
+   ============================================================
+   LÊ SALAFAZENDA
+   ============================================================
+   ============================================================ */
+
+async function obterSalaFazenda()
+{
+
+    try
+    {
+
+        salaStatus.textContent =
+            "ATUALIZANDO...";
+
+        salaStatus.className =
+            "section-status";
+
+        salaError.style.display =
             "none";
 
 
-        // ----------------------------------------------------
-        // CONSULTA DWEET
-        // ----------------------------------------------------
+        /* ----------------------------------------------------
+           CONSULTA DWEET
+           ---------------------------------------------------- */
 
         const resposta =
             await fetch(
-                URL_DWEET,
+                SALA_URL +
+                "?t=" +
+                Date.now(),
                 {
                     method: "GET",
                     cache: "no-store"
@@ -877,7 +1466,8 @@ async function obterDados() {
             );
 
 
-        if (!resposta.ok) {
+        if (!resposta.ok)
+        {
 
             throw new Error(
                 "HTTP " +
@@ -887,17 +1477,13 @@ async function obterDados() {
         }
 
 
-        // ----------------------------------------------------
-        // JSON
-        // ----------------------------------------------------
+        /* ----------------------------------------------------
+           JSON
+           ---------------------------------------------------- */
 
         const dados =
             await resposta.json();
 
-
-        // ----------------------------------------------------
-        // LOCALIZA O DWEET
-        // ----------------------------------------------------
 
         let dweet;
 
@@ -906,12 +1492,15 @@ async function obterDados() {
             Array.isArray(
                 dados.with
             )
-        ) {
+        )
+        {
 
             dweet =
                 dados.with[0];
 
-        } else {
+        }
+        else
+        {
 
             dweet =
                 dados;
@@ -922,10 +1511,11 @@ async function obterDados() {
         if (
             !dweet ||
             !dweet.content
-        ) {
+        )
+        {
 
             throw new Error(
-                "Formato de dados inválido"
+                "Formato de Dweet inválido"
             );
 
         }
@@ -935,39 +1525,34 @@ async function obterDados() {
             dweet.content;
 
 
-
-        // ====================================================
-        // TEMPERATURA
-        // ====================================================
+        /* ====================================================
+           TEMPERATURA
+           ==================================================== */
 
         if (
             content.temperature
             !== undefined
-        ) {
+        )
+        {
 
-
-            const temperatura =
+            const valor =
                 Number(
                     content.temperature
                 );
 
 
-            if (
-                !isNaN(
-                    temperatura
-                )
-            ) {
+            if (!isNaN(valor))
+            {
 
-
-                temperatureElement.textContent =
-                    temperatura.toFixed(2);
+                salaTemperature.textContent =
+                    valor.toFixed(2);
 
 
                 atualizarGauge(
-                    temperatureGauge,
-                    temperatura,
-                    TEMP_MIN,
-                    TEMP_MAX
+                    salaTempGauge,
+                    valor,
+                    -10,
+                    50
                 );
 
             }
@@ -975,39 +1560,34 @@ async function obterDados() {
         }
 
 
-
-        // ====================================================
-        // UMIDADE
-        // ====================================================
+        /* ====================================================
+           UMIDADE
+           ==================================================== */
 
         if (
             content.humidity
             !== undefined
-        ) {
+        )
+        {
 
-
-            const umidade =
+            const valor =
                 Number(
                     content.humidity
                 );
 
 
-            if (
-                !isNaN(
-                    umidade
-                )
-            ) {
+            if (!isNaN(valor))
+            {
 
-
-                humidityElement.textContent =
-                    umidade.toFixed(2);
+                salaHumidity.textContent =
+                    valor.toFixed(2);
 
 
                 atualizarGauge(
-                    humidityGauge,
-                    umidade,
-                    HUM_MIN,
-                    HUM_MAX
+                    salaHumGauge,
+                    valor,
+                    0,
+                    100
                 );
 
             }
@@ -1015,64 +1595,84 @@ async function obterDados() {
         }
 
 
+        /* ====================================================
+           PRESSÃO
+           ==================================================== */
 
-        // ====================================================
-        // THING
-        // ====================================================
+        if (
+            content.pressure
+            !== undefined
+        )
+        {
 
-        thingElement.textContent =
-            dweet.thing ||
-            THING;
-
-
-
-        // ====================================================
-        // DATA
-        // ====================================================
-
-        createdElement.textContent =
-            dweet.created ||
-            "--";
+            const valor =
+                Number(
+                    content.pressure
+                );
 
 
+            if (!isNaN(valor))
+            {
 
-        // ====================================================
-        // STATUS
-        // ====================================================
-
-        statusElement.textContent =
-            "🟢 Dados atualizados";
+                salaPressure.textContent =
+                    valor.toFixed(2);
 
 
-        statusElement.className =
-            "status ok";
+                atualizarGauge(
+                    salaPressureGauge,
+                    valor,
+                    850,
+                    1100
+                );
 
+            }
+
+        }
+
+
+        /* ====================================================
+           DATA/HORA
+           ==================================================== */
+
+        salaUpdate.textContent =
+            horaAtual();
+
+
+        /* ====================================================
+           STATUS
+           ==================================================== */
+
+        salaStatus.textContent =
+            "ONLINE";
+
+        salaStatus.className =
+            "section-status";
 
     }
 
 
-    catch (erro) {
-
+    catch (erro)
+    {
 
         console.error(
-            "Erro Dweet:",
+            "Erro SalaFazenda:",
             erro
         );
 
 
-        statusElement.textContent =
-            "🔴 Erro de conexão";
+        salaStatus.textContent =
+            "OFFLINE";
+
+        salaStatus.className =
+            "section-status error";
 
 
-        statusElement.className =
-            "status error";
-
-
-        errorElement.style.display =
+        salaError.style.display =
             "block";
 
 
-        errorElement.textContent =
+        salaError.textContent =
+            "Erro Dweet: " +
             erro.message;
 
     }
@@ -1080,27 +1680,252 @@ async function obterDados() {
 }
 
 
+/* ============================================================
+   ============================================================
+   LÊ CASA123
+   ============================================================
+   ============================================================ */
 
-// ============================================================
-// PRIMEIRA LEITURA
-// ============================================================
+async function obterCasa123()
+{
 
-obterDados();
+    try
+    {
+
+        casaStatus.textContent =
+            "ATUALIZANDO...";
+
+        casaStatus.className =
+            "section-status";
+
+        casaError.style.display =
+            "none";
 
 
+        /* ----------------------------------------------------
+           CONSULTA DWEET
+           ---------------------------------------------------- */
 
-// ============================================================
-// ATUALIZAÇÃO AUTOMÁTICA
-// ============================================================
+        const resposta =
+            await fetch(
+                CASA_URL +
+                "?t=" +
+                Date.now(),
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
+            );
+
+
+        if (!resposta.ok)
+        {
+
+            throw new Error(
+                "HTTP " +
+                resposta.status
+            );
+
+        }
+
+
+        /* ----------------------------------------------------
+           JSON
+           ---------------------------------------------------- */
+
+        const dados =
+            await resposta.json();
+
+
+        let dweet;
+
+
+        if (
+            Array.isArray(
+                dados.with
+            )
+        )
+        {
+
+            dweet =
+                dados.with[0];
+
+        }
+        else
+        {
+
+            dweet =
+                dados;
+
+        }
+
+
+        if (
+            !dweet ||
+            !dweet.content
+        )
+        {
+
+            throw new Error(
+                "Formato de Dweet inválido"
+            );
+
+        }
+
+
+        const content =
+            dweet.content;
+
+
+        /* ====================================================
+           TEMPERATURA
+           ==================================================== */
+
+        if (
+            content.temperature
+            !== undefined
+        )
+        {
+
+            const valor =
+                Number(
+                    content.temperature
+                );
+
+
+            if (!isNaN(valor))
+            {
+
+                casaTemperature.textContent =
+                    valor.toFixed(2);
+
+
+                atualizarGauge(
+                    casaTempGauge,
+                    valor,
+                    0,
+                    50
+                );
+
+            }
+
+        }
+
+
+        /* ====================================================
+           UMIDADE
+           ==================================================== */
+
+        if (
+            content.humidity
+            !== undefined
+        )
+        {
+
+            const valor =
+                Number(
+                    content.humidity
+                );
+
+
+            if (!isNaN(valor))
+            {
+
+                casaHumidity.textContent =
+                    valor.toFixed(2);
+
+
+                atualizarGauge(
+                    casaHumGauge,
+                    valor,
+                    0,
+                    100
+                );
+
+            }
+
+        }
+
+
+        /* ====================================================
+           DATA/HORA
+           ==================================================== */
+
+        casaUpdate.textContent =
+            horaAtual();
+
+
+        /* ====================================================
+           STATUS
+           ==================================================== */
+
+        casaStatus.textContent =
+            "ONLINE";
+
+        casaStatus.className =
+            "section-status";
+
+    }
+
+
+    catch (erro)
+    {
+
+        console.error(
+            "Erro Casa123:",
+            erro
+        );
+
+
+        casaStatus.textContent =
+            "OFFLINE";
+
+        casaStatus.className =
+            "section-status error";
+
+
+        casaError.style.display =
+            "block";
+
+
+        casaError.textContent =
+            "Erro Dweet: " +
+            erro.message;
+
+    }
+
+}
+
+
+/* ============================================================
+   PRIMEIRA LEITURA
+   ============================================================ */
+
+obterSalaFazenda();
+
+obterCasa123();
+
+
+/* ============================================================
+   ATUALIZAÇÃO AUTOMÁTICA
+   ============================================================ */
 
 setInterval(
-    obterDados,
-    INTERVALO
+    obterSalaFazenda,
+    SALA_INTERVALO
 );
 
 
+setInterval(
+    obterCasa123,
+    CASA_INTERVALO
+);
+
 </script>
+
 
 </body>
 
 </html>
+```
+
