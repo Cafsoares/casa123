@@ -10,7 +10,8 @@
       content="width=device-width,
                initial-scale=1.0,
                maximum-scale=1.0,
-               user-scalable=no">
+               user-scalable=no,
+               viewport-fit=cover">
 
 <meta name="theme-color" content="#071525">
 
@@ -29,8 +30,10 @@
 
 html,
 body {
+
     margin: 0;
     padding: 0;
+
     width: 100%;
     min-height: 100%;
 
@@ -47,11 +50,13 @@ body {
         );
 
     color: white;
+
+    overflow-x: hidden;
 }
 
 
 /* ============================================================
-   CONTAINER PRINCIPAL
+   CONTAINER
    ============================================================ */
 
 .container {
@@ -62,7 +67,7 @@ body {
 
     margin: auto;
 
-    padding: 20px;
+    padding: 14px;
 }
 
 
@@ -73,42 +78,41 @@ body {
 .header {
 
     background:
-        rgba(3, 14, 27, 0.90);
+        rgba(3, 14, 27, 0.92);
 
     border:
         1px solid #173554;
 
-    border-radius: 16px;
+    border-radius: 14px;
 
-    padding: 22px;
+    padding: 16px;
 
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 
     text-align: center;
 
     box-shadow:
-        0 8px 25px rgba(0,0,0,0.25);
+        0 6px 18px
+        rgba(0,0,0,0.25);
 }
-
 
 .header h1 {
 
     margin: 0;
 
     font-size:
-        clamp(32px, 5vw, 55px);
+        clamp(22px, 5vw, 42px);
 }
-
 
 .header p {
 
     margin:
-        7px 0 0;
+        5px 0 0;
 
     color: #79bfff;
 
     font-size:
-        clamp(16px, 2vw, 24px);
+        clamp(13px, 3vw, 20px);
 
     font-weight: bold;
 }
@@ -120,66 +124,69 @@ body {
 
 .section {
 
-    margin-bottom: 25px;
+    margin-bottom: 16px;
 }
 
+
+/* ============================================================
+   CABEÇALHO DA SEÇÃO
+   ============================================================ */
 
 .section-header {
 
     display: flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
     align-items: center;
 
     padding:
-        15px 20px;
+        10px 14px;
 
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 
     border:
         1px solid #28577e;
 
-    border-radius: 12px;
+    border-radius: 10px;
 
     background:
-        rgba(12, 32, 53, 0.80);
+        rgba(12, 32, 53, 0.85);
 }
-
 
 .section-title {
 
     font-size:
-        clamp(21px, 3vw, 30px);
+        clamp(17px, 4vw, 26px);
 
     font-weight: bold;
 }
-
 
 .section-subtitle {
 
     color: #8eafc9;
 
-    font-size: 14px;
+    font-size: 11px;
 
-    margin-top: 4px;
+    margin-top: 2px;
 }
-
 
 .section-status {
 
     padding:
-        8px 15px;
+        6px 9px;
 
-    border-radius: 8px;
+    border-radius: 7px;
 
     background: #267d39;
 
+    font-size: 11px;
+
     font-weight: bold;
 
-    color: white;
+    white-space: nowrap;
 }
-
 
 .section-status.error {
 
@@ -196,17 +203,19 @@ body {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3, minmax(0, 1fr));
 
-    gap: 18px;
+    gap: 10px;
 }
 
 
 /* ============================================================
-   CARD GAUGE
+   CARD
    ============================================================ */
 
 .card {
+
+    min-width: 0;
 
     background:
         linear-gradient(
@@ -218,57 +227,55 @@ body {
     border:
         1px solid #35485c;
 
-    border-radius: 17px;
+    border-radius: 12px;
 
-    padding: 20px;
+    padding: 10px 6px;
 
     text-align: center;
 
     box-shadow:
-        0 8px 25px
-        rgba(0,0,0,0.25);
+        0 5px 15px
+        rgba(0,0,0,0.22);
 }
-
 
 .card-title {
 
-    font-size: 22px;
+    font-size: 13px;
 
     font-weight: bold;
 
-    margin-bottom: 8px;
+    margin-bottom: 3px;
+
+    white-space: nowrap;
 }
 
 
 /* ============================================================
-   GAUGE CIRCULAR
+   GAUGE
    ============================================================ */
 
 .gauge {
 
     position: relative;
 
-    width: 210px;
+    width: 100%;
 
-    height: 210px;
+    max-width: 145px;
 
-    max-width: 100%;
+    aspect-ratio: 1 / 1;
 
     margin:
-        8px auto 10px;
+        4px auto 5px;
 }
-
 
 .gauge svg {
 
     width: 100%;
-
     height: 100%;
 
     transform:
         rotate(-90deg);
 }
-
 
 .gauge-bg {
 
@@ -279,7 +286,6 @@ body {
     stroke-width: 15;
 }
 
-
 .gauge-value {
 
     fill: none;
@@ -288,23 +294,28 @@ body {
 
     stroke-linecap: round;
 
-    stroke-dasharray: 439.82;
+    stroke-dasharray:
+        439.82;
 
-    stroke-dashoffset: 439.82;
+    stroke-dashoffset:
+        439.82;
 
     transition:
-        stroke-dashoffset 0.7s ease;
+        stroke-dashoffset
+        0.7s ease;
 }
 
+
+/* ============================================================
+   VALOR CENTRAL
+   ============================================================ */
 
 .gauge-center {
 
     position: absolute;
 
     top: 50%;
-
     left: 0;
-
     right: 0;
 
     transform:
@@ -313,69 +324,79 @@ body {
     text-align: center;
 }
 
-
 .gauge-number {
 
     font-size:
-        clamp(34px, 4vw, 48px);
+        clamp(22px, 5vw, 38px);
 
     font-weight: bold;
-}
 
+    line-height: 1;
+}
 
 .gauge-unit {
 
-    margin-top: 5px;
+    margin-top: 3px;
 
     color: #aeb8c2;
 
-    font-size: 18px;
+    font-size: 11px;
 }
 
+
+/* ============================================================
+   LIMITES
+   ============================================================ */
 
 .limits {
 
     color: #8f9aa5;
 
-    font-size: 13px;
+    font-size: 9px;
+
+    white-space: nowrap;
 }
 
 
 /* ============================================================
-   INFORMAÇÕES DO SENSOR
+   INFORMAÇÕES
    ============================================================ */
 
 .info {
 
-    margin-top: 15px;
+    margin-top: 7px;
 
-    padding: 15px;
+    padding:
+        5px 7px;
 
     border:
         1px solid #34485c;
 
-    border-radius: 12px;
+    border-radius: 8px;
 
     background:
         rgba(17,29,42,0.80);
 }
 
-
 .info-row {
 
     display: flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    gap: 5px;
 
     padding:
-        7px 0;
+        3px 0;
 
     border-bottom:
         1px solid #354250;
 
-    font-size: 14px;
+    font-size: 10px;
 }
-
 
 .info-row:last-child {
 
@@ -383,40 +404,46 @@ body {
         none;
 }
 
-
 .info-label {
 
     color: #929faa;
-}
 
+    text-align: left;
+}
 
 .info-value {
 
     font-weight: bold;
 
     color: #4ed75c;
+
+    text-align: right;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
 }
 
 
 /* ============================================================
-   ÁREA DE ERRO
+   ERRO
    ============================================================ */
 
 .error {
 
     display: none;
 
-    margin-top: 10px;
+    margin-top: 6px;
 
-    padding: 10px;
+    padding: 7px;
 
     background: #512929;
 
     color: #ffb4b4;
 
-    border-radius: 7px;
+    border-radius: 6px;
 
-    font-size: 13px;
+    font-size: 10px;
 
     word-break: break-word;
 }
@@ -428,9 +455,9 @@ body {
 
 .footer {
 
-    margin-top: 10px;
+    margin-top: 8px;
 
-    padding: 18px;
+    padding: 10px;
 
     text-align: center;
 
@@ -439,109 +466,442 @@ body {
 
     color: #83afd2;
 
-    font-size: 14px;
+    font-size: 10px;
 }
 
 
 /* ============================================================
-   RESPONSIVO
+   DESKTOP
    ============================================================ */
 
-@media (max-width: 1000px) {
+@media (min-width: 1000px) {
 
-    .gauges {
+    .container {
 
-        grid-template-columns:
-            repeat(2, 1fr);
+        padding: 20px;
     }
 
+    .header {
+
+        padding: 22px;
+    }
+
+    .card {
+
+        padding: 16px;
+    }
+
+    .card-title {
+
+        font-size: 20px;
+    }
+
+    .gauge {
+
+        max-width: 210px;
+    }
+
+    .gauge-number {
+
+        font-size: 44px;
+    }
+
+    .gauge-unit {
+
+        font-size: 16px;
+    }
+
+    .limits {
+
+        font-size: 12px;
+    }
+
+    .info {
+
+        padding: 10px;
+    }
+
+    .info-row {
+
+        font-size: 13px;
+    }
 }
 
+
+/* ============================================================
+   CELULAR
+   ============================================================ */
 
 @media (max-width: 600px) {
 
     .container {
 
-        padding: 8px;
+        padding:
+            6px;
     }
-
 
     .header {
 
-        padding: 15px;
+        padding:
+            10px;
 
-        margin-bottom: 12px;
+        margin-bottom:
+            8px;
+
+        border-radius:
+            10px;
     }
 
+    .header h1 {
+
+        font-size:
+            21px;
+    }
+
+    .header p {
+
+        font-size:
+            11px;
+    }
+
+    .section {
+
+        margin-bottom:
+            10px;
+    }
 
     .section-header {
 
-        padding: 12px;
+        padding:
+            8px 9px;
 
-        flex-direction: column;
+        margin-bottom:
+            7px;
 
-        align-items: flex-start;
-
-        gap: 8px;
+        border-radius:
+            8px;
     }
 
+    .section-title {
+
+        font-size:
+            16px;
+    }
+
+    .section-subtitle {
+
+        font-size:
+            9px;
+    }
+
+    .section-status {
+
+        font-size:
+            9px;
+
+        padding:
+            5px 7px;
+    }
 
     .gauges {
 
         grid-template-columns:
-            1fr;
+            repeat(3, minmax(0, 1fr));
 
-        gap: 12px;
+        gap:
+            5px;
     }
-
 
     .card {
 
-        padding: 14px;
+        padding:
+            7px 3px;
+
+        border-radius:
+            9px;
     }
 
+    .card-title {
+
+        font-size:
+            10px;
+
+        margin-bottom:
+            2px;
+    }
 
     .gauge {
 
-        width: 180px;
+        max-width:
+            112px;
 
-        height: 180px;
+        margin:
+            3px auto;
     }
 
+    .gauge-bg,
+    .gauge-value {
+
+        stroke-width:
+            13;
+    }
 
     .gauge-number {
 
-        font-size: 38px;
+        font-size:
+            clamp(19px, 5.8vw, 27px);
     }
 
+    .gauge-unit {
 
-    .section-status {
+        font-size:
+            9px;
 
-        font-size: 13px;
+        margin-top:
+            2px;
     }
 
+    .limits {
+
+        font-size:
+            7px;
+    }
+
+    .info {
+
+        margin-top:
+            4px;
+
+        padding:
+            3px 4px;
+    }
+
+    .info-row {
+
+        font-size:
+            8px;
+
+        padding:
+            2px 0;
+    }
+
+    .footer {
+
+        font-size:
+            8px;
+
+        padding:
+            7px;
+    }
 }
 
 
 /* ============================================================
-   CELULAR PEQUENO
+   GALAXY NOTE 20
    ============================================================ */
 
-@media (max-width: 360px) {
+@media
+    (min-width: 390px)
+    and (max-width: 450px) {
+
+    .container {
+
+        padding:
+            5px;
+    }
+
+    .header {
+
+        padding:
+            9px;
+
+        margin-bottom:
+            7px;
+    }
+
+    .header h1 {
+
+        font-size:
+            20px;
+    }
+
+    .header p {
+
+        font-size:
+            10px;
+    }
+
+    .section {
+
+        margin-bottom:
+            9px;
+    }
+
+    .section-header {
+
+        padding:
+            7px 8px;
+
+        margin-bottom:
+            6px;
+    }
+
+    .section-title {
+
+        font-size:
+            15px;
+    }
+
+    .section-subtitle {
+
+        font-size:
+            8px;
+    }
+
+    .section-status {
+
+        font-size:
+            8px;
+
+        padding:
+            4px 6px;
+    }
+
+    .gauges {
+
+        gap:
+            4px;
+    }
+
+    .card {
+
+        padding:
+            6px 2px;
+    }
+
+    .card-title {
+
+        font-size:
+            10px;
+    }
 
     .gauge {
 
-        width: 160px;
-
-        height: 160px;
+        max-width:
+            118px;
     }
-
 
     .gauge-number {
 
-        font-size: 32px;
+        font-size:
+            23px;
     }
 
+    .gauge-unit {
+
+        font-size:
+            8px;
+    }
+
+    .limits {
+
+        font-size:
+            7px;
+    }
+
+    .info-row {
+
+        font-size:
+            8px;
+    }
+}
+
+
+/* ============================================================
+   NOTE 20 - MODO PAISAGEM
+   ============================================================ */
+
+@media
+    (orientation: landscape)
+    and (max-height: 500px) {
+
+    .container {
+
+        padding:
+            5px 10px;
+    }
+
+    .header {
+
+        padding:
+            6px;
+
+        margin-bottom:
+            6px;
+    }
+
+    .header h1 {
+
+        font-size:
+            18px;
+    }
+
+    .header p {
+
+        display:
+            none;
+    }
+
+    .section {
+
+        margin-bottom:
+            6px;
+    }
+
+    .section-header {
+
+        padding:
+            5px 8px;
+
+        margin-bottom:
+            5px;
+    }
+
+    .gauge {
+
+        max-width:
+            100px;
+    }
+
+    .card {
+
+        padding:
+            4px;
+    }
+
+    .card-title {
+
+        font-size:
+            10px;
+    }
+
+    .gauge-number {
+
+        font-size:
+            21px;
+    }
+
+    .info {
+
+        display:
+            none;
+    }
+
+    .footer {
+
+        display:
+            none;
+    }
 }
 
 </style>
@@ -556,7 +916,7 @@ body {
 
 
 <!-- ==========================================================
-     CABEÇALHO PRINCIPAL
+     CABEÇALHO
      ========================================================== -->
 
 <header class="header">
@@ -572,11 +932,8 @@ body {
 </header>
 
 
-
 <!-- ==========================================================
-     ==========================================================
      SALAFAZENDA
-     ==========================================================
      ========================================================== -->
 
 <section class="section">
@@ -608,7 +965,6 @@ body {
 </div>
 
 
-
 <div class="gauges">
 
 
@@ -619,7 +975,7 @@ body {
 <div class="card">
 
     <div class="card-title">
-        🌡️ Temperatura
+        🌡️ Temp.
     </div>
 
 
@@ -633,7 +989,6 @@ body {
                 cy="80"
                 r="70">
             </circle>
-
 
             <circle
                 id="salaTempGauge"
@@ -667,7 +1022,7 @@ body {
 
 
     <div class="limits">
-        -10 °C &nbsp;&nbsp; 50 °C
+        -10&nbsp;&nbsp;&nbsp;50 °C
     </div>
 
 
@@ -676,11 +1031,11 @@ body {
         <div class="info-row">
 
             <span class="info-label">
-                Thing
+                Sensor
             </span>
 
             <span class="info-value">
-                salafazenda
+                SHT30
             </span>
 
         </div>
@@ -690,7 +1045,6 @@ body {
 </div>
 
 
-
 <!-- ==========================================================
      SALAFAZENDA - UMIDADE
      ========================================================== -->
@@ -698,7 +1052,7 @@ body {
 <div class="card">
 
     <div class="card-title">
-        💧 Umidade
+        💧 Umid.
     </div>
 
 
@@ -712,7 +1066,6 @@ body {
                 cy="80"
                 r="70">
             </circle>
-
 
             <circle
                 id="salaHumGauge"
@@ -746,7 +1099,7 @@ body {
 
 
     <div class="limits">
-        0 % &nbsp;&nbsp; 100 %
+        0&nbsp;&nbsp;&nbsp;100 %
     </div>
 
 
@@ -767,7 +1120,6 @@ body {
     </div>
 
 </div>
-
 
 
 <!-- ==========================================================
@@ -791,7 +1143,6 @@ body {
                 cy="80"
                 r="70">
             </circle>
-
 
             <circle
                 id="salaPressureGauge"
@@ -825,7 +1176,7 @@ body {
 
 
     <div class="limits">
-        850 hPa &nbsp;&nbsp; 1100 hPa
+        850&nbsp;&nbsp;1100
     </div>
 
 
@@ -851,13 +1202,16 @@ body {
 </div>
 
 
+<!-- ==========================================================
+     INFORMAÇÕES SALAFAZENDA
+     ========================================================== -->
 
 <div class="info">
 
     <div class="info-row">
 
         <span class="info-label">
-            Thing Dweet
+            Dweet
         </span>
 
         <span class="info-value">
@@ -870,7 +1224,7 @@ body {
     <div class="info-row">
 
         <span class="info-label">
-            Última atualização
+            Atualização
         </span>
 
         <span
@@ -895,11 +1249,8 @@ body {
 </section>
 
 
-
 <!-- ==========================================================
-     ==========================================================
      CASA123
-     ==========================================================
      ========================================================== -->
 
 <section class="section">
@@ -914,7 +1265,7 @@ body {
         </div>
 
         <div class="section-subtitle">
-            Monitoramento ambiental via dweet.cc
+            Monitoramento via dweet.cc
         </div>
 
     </div>
@@ -931,7 +1282,6 @@ body {
 </div>
 
 
-
 <div class="gauges">
 
 
@@ -942,7 +1292,7 @@ body {
 <div class="card">
 
     <div class="card-title">
-        🌡️ Temperatura
+        🌡️ Temp.
     </div>
 
 
@@ -956,7 +1306,6 @@ body {
                 cy="80"
                 r="70">
             </circle>
-
 
             <circle
                 id="casaTempGauge"
@@ -990,7 +1339,7 @@ body {
 
 
     <div class="limits">
-        0 °C &nbsp;&nbsp; 50 °C
+        0&nbsp;&nbsp;&nbsp;50 °C
     </div>
 
 
@@ -999,11 +1348,11 @@ body {
         <div class="info-row">
 
             <span class="info-label">
-                Thing
+                Sensor
             </span>
 
             <span class="info-value">
-                casa123
+                AHT20
             </span>
 
         </div>
@@ -1013,7 +1362,6 @@ body {
 </div>
 
 
-
 <!-- ==========================================================
      CASA123 - UMIDADE
      ========================================================== -->
@@ -1021,7 +1369,7 @@ body {
 <div class="card">
 
     <div class="card-title">
-        💧 Umidade
+        💧 Umid.
     </div>
 
 
@@ -1035,7 +1383,6 @@ body {
                 cy="80"
                 r="70">
             </circle>
-
 
             <circle
                 id="casaHumGauge"
@@ -1069,7 +1416,7 @@ body {
 
 
     <div class="limits">
-        0 % &nbsp;&nbsp; 100 %
+        0&nbsp;&nbsp;&nbsp;100 %
     </div>
 
 
@@ -1093,59 +1440,53 @@ body {
 
 
 <!-- ==========================================================
-     CASA123 - INFORMAÇÕES
+     ESPAÇO VAZIO PARA MANTER O LAYOUT
      ========================================================== -->
 
-<div class="card">
+<div class="card"
+     style="
+        visibility:hidden;
+        box-shadow:none;
+        border:none;
+     ">
+</div>
 
-    <div class="card-title">
-        📡 Dweet
+
+</div>
+
+
+<!-- ==========================================================
+     INFORMAÇÕES CASA123
+     ========================================================== -->
+
+<div class="info">
+
+    <div class="info-row">
+
+        <span class="info-label">
+            Dweet
+        </span>
+
+        <span class="info-value">
+            casa123
+        </span>
+
     </div>
 
 
-    <div class="info">
+    <div class="info-row">
 
-        <div class="info-row">
+        <span class="info-label">
+            Atualização
+        </span>
 
-            <span class="info-label">
-                Thing
-            </span>
+        <span
+            id="casaUpdate"
+            class="info-value">
 
-            <span class="info-value">
-                casa123
-            </span>
+            --
 
-        </div>
-
-
-        <div class="info-row">
-
-            <span class="info-label">
-                Atualização
-            </span>
-
-            <span
-                id="casaUpdate"
-                class="info-value">
-
-                --
-
-            </span>
-
-        </div>
-
-
-        <div class="info-row">
-
-            <span class="info-label">
-                Intervalo
-            </span>
-
-            <span class="info-value">
-                5 segundos
-            </span>
-
-        </div>
+        </span>
 
     </div>
 
@@ -1158,11 +1499,7 @@ body {
 </div>
 
 
-</div>
-
-
 </section>
-
 
 
 <!-- ==========================================================
@@ -1171,15 +1508,7 @@ body {
 
 <footer class="footer">
 
-    Monitoramento automático via dweet.cc
-
-    <br><br>
-
-    SalaFazenda: SHT30 + BMP280
-
-    &nbsp; | &nbsp;
-
-    Casa123BH: AHT20
+    Atualização automática via dweet.cc
 
 </footer>
 
@@ -1187,30 +1516,27 @@ body {
 </div>
 
 
-
 <script>
 
+
 /* ============================================================
-   CONFIGURAÇÃO DWEET
+   DWEET - SALAFAZENDA
    ============================================================ */
 
-
-/*
-   SALAFAZENDA
-*/
-
-const SALA_THING = "salafazenda";
+const SALA_THING =
+    "salafazenda";
 
 const SALA_URL =
     "https://dweet.cc/get/latest/dweet/for/"
     + SALA_THING;
 
 
-/*
-   CASA123
-*/
+/* ============================================================
+   DWEET - CASA123
+   ============================================================ */
 
-const CASA_THING = "casa123";
+const CASA_THING =
+    "casa123";
 
 const CASA_URL =
     "https://dweet.cc/get/latest/dweet/for/"
@@ -1221,13 +1547,15 @@ const CASA_URL =
    INTERVALOS
    ============================================================ */
 
-const SALA_INTERVALO = 10000;
+const SALA_INTERVALO =
+    10000;
 
-const CASA_INTERVALO = 5000;
+const CASA_INTERVALO =
+    5000;
 
 
 /* ============================================================
-   CIRCUNFERÊNCIA DOS GAUGES
+   CIRCUNFERÊNCIA
    ============================================================ */
 
 const CIRCUNFERENCIA =
@@ -1325,7 +1653,7 @@ const casaError =
 
 
 /* ============================================================
-   CONFIGURAÇÃO INICIAL
+   CONFIGURAÇÃO DOS GAUGES
    ============================================================ */
 
 document
@@ -1340,7 +1668,6 @@ document
 
             gauge.style.strokeDashoffset =
                 CIRCUNFERENCIA;
-
         }
     );
 
@@ -1355,7 +1682,6 @@ function limitar(
     maximo
 )
 {
-
     return Math.min(
         Math.max(
             valor,
@@ -1363,7 +1689,6 @@ function limitar(
         ),
         maximo
     );
-
 }
 
 
@@ -1409,12 +1734,11 @@ function atualizarGauge(
 
     gauge.style.strokeDashoffset =
         offset;
-
 }
 
 
 /* ============================================================
-   DATA/HORA
+   HORA ATUAL
    ============================================================ */
 
 function horaAtual()
@@ -1429,9 +1753,7 @@ function horaAtual()
 
 
 /* ============================================================
-   ============================================================
    LÊ SALAFAZENDA
-   ============================================================
    ============================================================ */
 
 async function obterSalaFazenda()
@@ -1441,7 +1763,7 @@ async function obterSalaFazenda()
     {
 
         salaStatus.textContent =
-            "ATUALIZANDO...";
+            "ATUALIZANDO";
 
         salaStatus.className =
             "section-status";
@@ -1449,10 +1771,6 @@ async function obterSalaFazenda()
         salaError.style.display =
             "none";
 
-
-        /* ----------------------------------------------------
-           CONSULTA DWEET
-           ---------------------------------------------------- */
 
         const resposta =
             await fetch(
@@ -1476,10 +1794,6 @@ async function obterSalaFazenda()
 
         }
 
-
-        /* ----------------------------------------------------
-           JSON
-           ---------------------------------------------------- */
 
         const dados =
             await resposta.json();
@@ -1541,11 +1855,13 @@ async function obterSalaFazenda()
                 );
 
 
-            if (!isNaN(valor))
+            if (
+                !isNaN(valor)
+            )
             {
 
                 salaTemperature.textContent =
-                    valor.toFixed(2);
+                    valor.toFixed(1);
 
 
                 atualizarGauge(
@@ -1576,11 +1892,13 @@ async function obterSalaFazenda()
                 );
 
 
-            if (!isNaN(valor))
+            if (
+                !isNaN(valor)
+            )
             {
 
                 salaHumidity.textContent =
-                    valor.toFixed(2);
+                    valor.toFixed(1);
 
 
                 atualizarGauge(
@@ -1611,11 +1929,13 @@ async function obterSalaFazenda()
                 );
 
 
-            if (!isNaN(valor))
+            if (
+                !isNaN(valor)
+            )
             {
 
                 salaPressure.textContent =
-                    valor.toFixed(2);
+                    valor.toFixed(1);
 
 
                 atualizarGauge(
@@ -1630,17 +1950,9 @@ async function obterSalaFazenda()
         }
 
 
-        /* ====================================================
-           DATA/HORA
-           ==================================================== */
-
         salaUpdate.textContent =
             horaAtual();
 
-
-        /* ====================================================
-           STATUS
-           ==================================================== */
 
         salaStatus.textContent =
             "ONLINE";
@@ -1681,9 +1993,7 @@ async function obterSalaFazenda()
 
 
 /* ============================================================
-   ============================================================
    LÊ CASA123
-   ============================================================
    ============================================================ */
 
 async function obterCasa123()
@@ -1693,7 +2003,7 @@ async function obterCasa123()
     {
 
         casaStatus.textContent =
-            "ATUALIZANDO...";
+            "ATUALIZANDO";
 
         casaStatus.className =
             "section-status";
@@ -1701,10 +2011,6 @@ async function obterCasa123()
         casaError.style.display =
             "none";
 
-
-        /* ----------------------------------------------------
-           CONSULTA DWEET
-           ---------------------------------------------------- */
 
         const resposta =
             await fetch(
@@ -1728,10 +2034,6 @@ async function obterCasa123()
 
         }
 
-
-        /* ----------------------------------------------------
-           JSON
-           ---------------------------------------------------- */
 
         const dados =
             await resposta.json();
@@ -1793,11 +2095,13 @@ async function obterCasa123()
                 );
 
 
-            if (!isNaN(valor))
+            if (
+                !isNaN(valor)
+            )
             {
 
                 casaTemperature.textContent =
-                    valor.toFixed(2);
+                    valor.toFixed(1);
 
 
                 atualizarGauge(
@@ -1828,11 +2132,13 @@ async function obterCasa123()
                 );
 
 
-            if (!isNaN(valor))
+            if (
+                !isNaN(valor)
+            )
             {
 
                 casaHumidity.textContent =
-                    valor.toFixed(2);
+                    valor.toFixed(1);
 
 
                 atualizarGauge(
@@ -1847,17 +2153,9 @@ async function obterCasa123()
         }
 
 
-        /* ====================================================
-           DATA/HORA
-           ==================================================== */
-
         casaUpdate.textContent =
             horaAtual();
 
-
-        /* ====================================================
-           STATUS
-           ==================================================== */
 
         casaStatus.textContent =
             "ONLINE";
@@ -1915,11 +2213,11 @@ setInterval(
     SALA_INTERVALO
 );
 
-
 setInterval(
     obterCasa123,
     CASA_INTERVALO
 );
+
 
 </script>
 
