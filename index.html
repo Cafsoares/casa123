@@ -1,4 +1,4 @@
-```html
+html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -192,6 +192,23 @@ body {
 
     background: #8b3030;
 }
+
+.section-status.waiting {
+
+    background: #8a6500;
+}
+
+.externo-tempo {
+
+    margin-top: 6px;
+
+    color: #8eafc9;
+
+    font-size: 10px;
+
+    text-align: center;
+}
+
 
 
 /* ============================================================
@@ -926,7 +943,7 @@ body {
     </h1>
 
     <p>
-        SalaFazenda + Casa123BH
+        SalaFazenda + Casa123BH + ExternoBH
     </p>
 
 </header>
@@ -1503,6 +1520,281 @@ body {
 
 
 <!-- ==========================================================
+     EXTERNOBH
+     ========================================================== -->
+
+<section class="section">
+
+
+<div class="section-header">
+
+    <div>
+
+        <div class="section-title">
+            🌡️ ExternoBH
+        </div>
+
+        <div class="section-subtitle">
+            Monitoramento via dweet.cc
+        </div>
+
+    </div>
+
+
+    <div
+        id="externoStatus"
+        class="section-status">
+
+        CONECTANDO...
+
+    </div>
+
+</div>
+
+
+<div class="gauges">
+
+
+<!-- ==========================================================
+     EXTERNOBH - TEMPERATURA
+     ========================================================== -->
+
+<div class="card">
+
+    <div class="card-title">
+        🌡️ Temp.
+    </div>
+
+
+    <div class="gauge">
+
+        <svg viewBox="0 0 160 160">
+
+            <circle
+                class="gauge-bg"
+                cx="80"
+                cy="80"
+                r="70">
+            </circle>
+
+            <circle
+                id="externoTempGauge"
+                class="gauge-value"
+                cx="80"
+                cy="80"
+                r="70"
+                stroke="#ff7043">
+            </circle>
+
+        </svg>
+
+
+        <div class="gauge-center">
+
+            <div
+                id="externoTemperature"
+                class="gauge-number">
+
+                --
+
+            </div>
+
+            <div class="gauge-unit">
+                °C
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="limits">
+        0&nbsp;&nbsp;&nbsp;50 °C
+    </div>
+
+
+    <div class="info">
+
+        <div class="info-row">
+
+            <span class="info-label">
+                Sensor
+            </span>
+
+            <span class="info-value">
+                AHT20
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==========================================================
+     EXTERNOBH - UMIDADE
+     ========================================================== -->
+
+<div class="card">
+
+    <div class="card-title">
+        💧 Umid.
+    </div>
+
+
+    <div class="gauge">
+
+        <svg viewBox="0 0 160 160">
+
+            <circle
+                class="gauge-bg"
+                cx="80"
+                cy="80"
+                r="70">
+            </circle>
+
+            <circle
+                id="externoHumGauge"
+                class="gauge-value"
+                cx="80"
+                cy="80"
+                r="70"
+                stroke="#29a9ff">
+            </circle>
+
+        </svg>
+
+
+        <div class="gauge-center">
+
+            <div
+                id="externoHumidity"
+                class="gauge-number">
+
+                --
+
+            </div>
+
+            <div class="gauge-unit">
+                %
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="limits">
+        0&nbsp;&nbsp;&nbsp;100 %
+    </div>
+
+
+    <div class="info">
+
+        <div class="info-row">
+
+            <span class="info-label">
+                Sensor
+            </span>
+
+            <span class="info-value">
+                AHT20
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==========================================================
+     EXTERNOBH - TEMPO
+     ========================================================== -->
+
+<div class="card">
+
+    <div class="card-title">
+        🕐 Leitura
+    </div>
+
+    <div class="gauge-center"
+         style="
+            position:relative;
+            transform:none;
+            top:auto;
+            padding-top:35px;
+         ">
+
+        <div
+            id="externoTempo"
+            class="gauge-number">
+
+            --
+
+        </div>
+
+        <div class="gauge-unit">
+            desde a última leitura
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!-- ==========================================================
+     INFORMAÇÕES EXTERNOBH
+     ========================================================== -->
+
+<div class="info">
+
+    <div class="info-row">
+
+        <span class="info-label">
+            Dweet
+        </span>
+
+        <span class="info-value">
+            ExternoBH
+        </span>
+
+    </div>
+
+
+    <div class="info-row">
+
+        <span class="info-label">
+            Última leitura
+        </span>
+
+        <span
+            id="externoUpdate"
+            class="info-value">
+
+            --
+
+        </span>
+
+    </div>
+
+
+    <div
+        id="externoError"
+        class="error">
+    </div>
+
+</div>
+
+
+</section>
+
+
+<!-- ==========================================================
      RODAPÉ
      ========================================================== -->
 
@@ -1552,6 +1844,29 @@ const SALA_INTERVALO =
 
 const CASA_INTERVALO =
     5000;
+
+
+/* ============================================================
+   DWEET - EXTERNOBH
+   ============================================================ */
+
+const EXTERNO_THING =
+    "ExternoBH";
+
+const EXTERNO_URL =
+    "https://dweet.cc/get/latest/dweet/for/"
+    + EXTERNO_THING;
+
+
+/* ============================================================
+   INTERVALOS EXTERNOBH
+   ============================================================ */
+
+const EXTERNO_INTERVALO =
+    10000;
+
+const EXTERNO_OFFLINE =
+    60000;
 
 
 /* ============================================================
@@ -1650,6 +1965,62 @@ const casaError =
     document.getElementById(
         "casaError"
     );
+
+
+/* ============================================================
+   ELEMENTOS EXTERNOBH
+   ============================================================ */
+
+const externoTempGauge =
+    document.getElementById(
+        "externoTempGauge"
+    );
+
+const externoHumGauge =
+    document.getElementById(
+        "externoHumGauge"
+    );
+
+const externoTemperature =
+    document.getElementById(
+        "externoTemperature"
+    );
+
+const externoHumidity =
+    document.getElementById(
+        "externoHumidity"
+    );
+
+const externoStatus =
+    document.getElementById(
+        "externoStatus"
+    );
+
+const externoUpdate =
+    document.getElementById(
+        "externoUpdate"
+    );
+
+const externoError =
+    document.getElementById(
+        "externoError"
+    );
+
+const externoTempo =
+    document.getElementById(
+        "externoTempo"
+    );
+
+
+/* ============================================================
+   CONTROLE DA ÚLTIMA LEITURA EXTERNOBH
+   ============================================================ */
+
+let externoUltimoCreated =
+    null;
+
+let externoUltimaLeituraMs =
+    null;
 
 
 /* ============================================================
@@ -2196,12 +2567,409 @@ async function obterCasa123()
 
 
 /* ============================================================
+   LÊ EXTERNOBH
+   ============================================================ */
+
+async function obterExternoBH()
+{
+
+    try
+    {
+
+        externoStatus.textContent =
+            "ATUALIZANDO";
+
+        externoStatus.className =
+            "section-status";
+
+        externoError.style.display =
+            "none";
+
+
+        const resposta =
+            await fetch(
+                EXTERNO_URL +
+                "?t=" +
+                Date.now(),
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
+            );
+
+
+        if (!resposta.ok)
+        {
+
+            throw new Error(
+                "HTTP " +
+                resposta.status
+            );
+
+        }
+
+
+        const dados =
+            await resposta.json();
+
+
+        let dweet;
+
+
+        if (
+            Array.isArray(
+                dados.with
+            )
+        )
+        {
+
+            dweet =
+                dados.with[0];
+
+        }
+        else
+        {
+
+            dweet =
+                dados;
+
+        }
+
+
+        if (
+            !dweet ||
+            !dweet.content
+        )
+        {
+
+            throw new Error(
+                "Formato de Dweet inválido"
+            );
+
+        }
+
+
+        const content =
+            dweet.content;
+
+
+        const createdAtual =
+            dweet.created;
+
+
+        /*
+         * SOMENTE UMA MUDANÇA NO "created"
+         * É CONSIDERADA UMA NOVA LEITURA.
+         */
+
+        if (
+            createdAtual &&
+            createdAtual !==
+                externoUltimoCreated
+        )
+        {
+
+            externoUltimoCreated =
+                createdAtual;
+
+
+            const createdMs =
+                Date.parse(
+                    createdAtual
+                );
+
+
+            /*
+             * Usamos o próprio horário do Dweet
+             * para determinar a idade da leitura.
+             */
+
+            if (
+                !isNaN(createdMs)
+            )
+            {
+
+                externoUltimaLeituraMs =
+                    createdMs;
+
+            }
+            else
+            {
+
+                externoUltimaLeituraMs =
+                    Date.now();
+
+            }
+
+
+            /*
+             * TEMPERATURA
+             */
+
+            if (
+                content.temperature
+                !== undefined
+            )
+            {
+
+                const valor =
+                    Number(
+                        content.temperature
+                    );
+
+
+                if (
+                    !isNaN(valor)
+                )
+                {
+
+                    externoTemperature.textContent =
+                        valor.toFixed(1);
+
+
+                    atualizarGauge(
+                        externoTempGauge,
+                        valor,
+                        0,
+                        50
+                    );
+
+                }
+
+            }
+
+
+            /*
+             * UMIDADE
+             */
+
+            if (
+                content.humidity
+                !== undefined
+            )
+            {
+
+                const valor =
+                    Number(
+                        content.humidity
+                    );
+
+
+                if (
+                    !isNaN(valor)
+                )
+                {
+
+                    externoHumidity.textContent =
+                        valor.toFixed(1);
+
+
+                    atualizarGauge(
+                        externoHumGauge,
+                        valor,
+                        0,
+                        100
+                    );
+
+                }
+
+            }
+
+
+            externoUpdate.textContent =
+                formatarDataExterno(
+                    createdAtual
+                );
+
+
+            console.log(
+                "ExternoBH - NOVA LEITURA:",
+                createdAtual
+            );
+
+        }
+
+
+        verificarEstadoExternoBH();
+
+    }
+
+
+    catch (erro)
+    {
+
+        console.error(
+            "Erro ExternoBH:",
+            erro
+        );
+
+
+        /*
+         * Uma falha momentânea na consulta ao
+         * Dweet não significa, sozinha, que o
+         * ESP32 está fora do ar.
+         */
+
+        externoError.style.display =
+            "block";
+
+
+        externoError.textContent =
+            "Erro Dweet: " +
+            erro.message;
+
+
+        verificarEstadoExternoBH();
+
+    }
+
+}
+
+
+/* ============================================================
+   VERIFICA ESTADO EXTERNOBH
+   ============================================================ */
+
+function verificarEstadoExternoBH()
+{
+
+    if (
+        externoUltimaLeituraMs ===
+        null
+    )
+    {
+
+        externoStatus.textContent =
+            "AGUARDANDO";
+
+        externoStatus.className =
+            "section-status waiting";
+
+        externoTempo.textContent =
+            "--";
+
+        return;
+
+    }
+
+
+    const decorrido =
+        Date.now() -
+        externoUltimaLeituraMs;
+
+
+    const segundos =
+        Math.max(
+            0,
+            Math.floor(
+                decorrido / 1000
+            )
+        );
+
+
+    externoTempo.textContent =
+        segundos +
+        " s";
+
+
+    /*
+     * 60 SEGUNDOS SEM UMA NOVA LEITURA
+     * = FORA DO AR
+     */
+
+    if (
+        decorrido >=
+        EXTERNO_OFFLINE
+    )
+    {
+
+        externoStatus.textContent =
+            "FORA DO AR";
+
+        externoStatus.className =
+            "section-status error";
+
+    }
+    else
+    {
+
+        externoStatus.textContent =
+            "ONLINE";
+
+        externoStatus.className =
+            "section-status";
+
+    }
+
+}
+
+
+/* ============================================================
+   FORMATA DATA/HORA DO DWEET
+   ============================================================ */
+
+function formatarDataExterno(
+    dataString
+)
+{
+
+    const data =
+        new Date(
+            dataString
+        );
+
+
+    if (
+        isNaN(
+            data.getTime()
+        )
+    )
+    {
+
+        return dataString;
+
+    }
+
+
+    return data.toLocaleString(
+        "pt-BR",
+        {
+            timeZone:
+                "America/Sao_Paulo",
+
+            day:
+                "2-digit",
+
+            month:
+                "2-digit",
+
+            year:
+                "numeric",
+
+            hour:
+                "2-digit",
+
+            minute:
+                "2-digit",
+
+            second:
+                "2-digit"
+        }
+    );
+
+}
+
+
+/* ============================================================
    PRIMEIRA LEITURA
    ============================================================ */
 
 obterSalaFazenda();
 
 obterCasa123();
+
+
+obterExternoBH();
 
 
 /* ============================================================
@@ -2219,11 +2987,26 @@ setInterval(
 );
 
 
+setInterval(
+    obterExternoBH,
+    EXTERNO_INTERVALO
+);
+
+
+/* ============================================================
+   VERIFICAÇÃO DO ESTADO EXTERNOBH A CADA 1 SEGUNDO
+   ============================================================ */
+
+setInterval(
+    verificarEstadoExternoBH,
+    1000
+);
+
+
 </script>
 
 
 </body>
 
 </html>
-```
 
